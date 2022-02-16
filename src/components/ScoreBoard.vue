@@ -1,6 +1,6 @@
 <template>
   <div class="scoreboard">
-    <div class="score" v-for="(match, key) in this.$store.state.matchList" :key="key">
+    <div class="score" v-for="(match, key) in this.$store.state.weeklyMatches" :key="key">
       <div class="local">
         <div class="local-info">
           <img :src="match.showLocal.showLogo" :alt="'Escudo de ' + match.showLocal.showName" />
@@ -40,15 +40,21 @@ img {
   gap: 20px;
 }
 .score {
-  width: 300px;
-  height: 100px;
   background-color: black;
   color: white;
   border-radius: 10px;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   gap: 10px;
+}
+.local {
+  margin-right: 15px;
+  padding: 10px 0;
+}
+.visitor {
+  margin-left: 15px;
+  padding: 10px 0;
 }
 .local,
 .visitor {
@@ -60,6 +66,7 @@ img {
 }
 .local-info,
 .visitor-info {
+  padding: 0 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;

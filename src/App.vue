@@ -30,24 +30,20 @@
 </style>
 
 <script>
-import Match from "@/js/Match.js";
-import SPAIN_ONE from "@/js/spainOne.js";
+import { SPAIN_ONE, SPAIN_ONE_CALENDAR } from "@/js/spainOne.js";
 export default {
   created() {
-    const TEAMS = SPAIN_ONE;
-    this.$store.dispatch("addTeams", TEAMS);
+    this.$store.dispatch("addTeams", SPAIN_ONE);
+    this.$store.dispatch("createCalendar", SPAIN_ONE_CALENDAR);
 
-    const MATCHES = [];
-    for (let i = 0; i < this.$store.state.teamList.length; i += 2) {
-      const match = new Match(this.$store.state.teamList[i], this.$store.state.teamList[i + 1]);
-      MATCHES.push(match);
-    }
-    MATCHES.forEach(match => {
+    // Este código se ejecutará al pulsar un botón
+    SPAIN_ONE_CALENDAR[0].forEach(match => {
       match.addLocalGoals();
       match.addVisitorGoals();
       match.checkWinner();
     });
-    this.$store.dispatch("addMatches", MATCHES);
+
+    this.$store.dispatch("showMatches", SPAIN_ONE_CALENDAR[0]);
   }
 };
 </script>

@@ -3,22 +3,29 @@ import { createStore } from "vuex";
 export default createStore({
   state: {
     teamList: [],
-    matchList: []
+    calendar: [],
+    weeklyMatches: []
   },
   mutations: {
     ADD_TEAMS(state, teams) {
       state.teamList = teams;
     },
-    ADD_MATCHES(state, matches) {
-      state.matchList = matches;
+    CREATE_CALENDAR(state, calendar) {
+      state.calendar = calendar;
+    },
+    SHOW_MATCHES(state, matches) {
+      state.weeklyMatches = matches;
     }
   },
   actions: {
     addTeams({ commit }, teams) {
       commit("ADD_TEAMS", teams);
     },
-    addMatches({ commit }, matches) {
-      commit("ADD_MATCHES", matches);
+    createCalendar({ commit }, calendar) {
+      commit("CREATE_CALENDAR", calendar);
+    },
+    showMatches({ commit }, matches) {
+      commit("SHOW_MATCHES", matches);
     }
   },
   modules: {
