@@ -1,4 +1,4 @@
-import Team from "@/js/Team.js";
+import Team from "./Team.js";
 
 const SPAIN_ONE = [
   new Team("Alavés", "/img/spain1/alaves.png"),

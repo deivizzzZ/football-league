@@ -1,5 +1,6 @@
 <template>
   <div class="classification">
+    <h1>Primera División de España</h1>
     <ScoreTable />
   </div>
 </template>
@@ -18,6 +19,7 @@ export default {
 <style scoped>
 .classification {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
