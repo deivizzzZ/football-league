@@ -16,20 +16,26 @@ export default class Match {
     return this.visitor;
   }
 
-  get addLocalGoals() {
+  get showLocalGoals() {
+    return this.localGoals;
+  }
+
+  get showVisitorGoals() {
+    return this.visitorGoals;
+  }
+
+  addLocalGoals() {
     const goals = goalGen();
     this.localGoals = goals;
     this.local.addGoalsFor(goals);
     this.visitor.addGoalsAgainst(goals);
-    return this.localGoals;
   }
 
-  get addVisitorGoals() {
+  addVisitorGoals() {
     const goals = goalGen();
     this.visitorGoals = goals;
     this.visitor.addGoalsFor(goals);
     this.local.addGoalsAgainst(goals);
-    return this.visitorGoals;
   }
 
   checkWinner() {

@@ -1,6 +1,6 @@
 <template>
   <div id="nav">
-    <router-link to="/">Home</router-link>|
+    <router-link to="/">Partidos</router-link>|
     <router-link to="/classification">Clasificación</router-link>
   </div>
   <router-view />
@@ -30,10 +30,24 @@
 </style>
 
 <script>
+import Match from "@/js/Match.js";
 import SPAIN_ONE from "@/js/spainOne.js";
 export default {
-  mounted() {
-    this.$store.dispatch("addTeams", SPAIN_ONE);
+  created() {
+    const TEAMS = SPAIN_ONE;
+    this.$store.dispatch("addTeams", TEAMS);
+
+    const MATCHES = [];
+    for (let i = 0; i < this.$store.state.teamList.length; i += 2) {
+      const match = new Match(this.$store.state.teamList[i], this.$store.state.teamList[i + 1]);
+      MATCHES.push(match);
+    }
+    MATCHES.forEach(match => {
+      match.addLocalGoals();
+      match.addVisitorGoals();
+      match.checkWinner();
+    });
+    this.$store.dispatch("addMatches", MATCHES);
   }
 };
 </script>

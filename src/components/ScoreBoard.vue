@@ -1,0 +1,68 @@
+<template>
+  <div class="scoreboard">
+    <div class="score" v-for="(match, key) in this.$store.state.matchList" :key="key">
+      <div class="local">
+        <div class="local-info">
+          <img :src="match.showLocal.showLogo" :alt="'Escudo de ' + match.showLocal.showName" />
+          {{ match.showLocal.showName }}
+        </div>
+        <div class="local-goals">{{ match.showLocalGoals }}</div>
+      </div>
+      <div class="visitor">
+        <div class="visitor-info">
+          {{ match.showVisitor.showName }}
+          <img
+            :src="match.showVisitor.showLogo"
+            :alt="'Escudo de ' + match.showLocal.showName"
+          />
+        </div>
+        <div class="visitor-goals">{{ match.showVisitorGoals }}</div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+
+export default {
+  name: "ScoreBoard",
+};
+</script>
+
+<style scoped>
+img {
+  width: 30px;
+  height: 30px;
+}
+.scoreboard {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.score {
+  width: 300px;
+  height: 100px;
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.local,
+.visitor {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.local-info,
+.visitor-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+</style>
