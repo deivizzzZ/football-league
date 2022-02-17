@@ -35,15 +35,6 @@ export default {
   created() {
     this.$store.dispatch("addTeams", SPAIN_ONE);
     this.$store.dispatch("createCalendar", SPAIN_ONE_CALENDAR);
-
-    // Este código se ejecutará al pulsar un botón
-    SPAIN_ONE_CALENDAR[0].forEach(match => {
-      match.addLocalGoals();
-      match.addVisitorGoals();
-      match.checkWinner();
-    });
-
-    this.$store.dispatch("showMatches", SPAIN_ONE_CALENDAR[0]);
   }
 };
 </script>
