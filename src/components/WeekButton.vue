@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import _ from "lodash";
 export default {
   name: "WeekButton",
   data() {
@@ -28,10 +29,14 @@ export default {
       });
       this.$store.dispatch("showMatches", matches);
       this.$store.dispatch("nextWeek");
+      // stop simulation
       if (this.$store.state.weekCounter === this.$store.state.calendar.length) {
         this.running = false;
         this.finished = true;
       }
+      // update classification
+      const updatedTable = _.orderBy(this.$store.state.teamList, ["points", "wins", "loses", "goalsFor", "goalsAgainst"], ["desc", "desc", "asc", "desc", "asc"]);
+      this.$store.dispatch("updateTable", updatedTable);
     }
   }
 };

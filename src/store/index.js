@@ -40,6 +40,9 @@ export default createStore({
     },
     startSimulation({ commit }) {
       commit("START_SIMULATION");
+    },
+    updateTable({ commit }, list) {
+      commit("ADD_TEAMS", list);
     }
   },
   modules: {
