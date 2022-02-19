@@ -2,6 +2,7 @@
   <div class="games">
     <WeekButton />
     <ScoreBoard />
+    <LeagueWinner />
   </div>
 </template>
 
@@ -9,12 +10,14 @@
 // @ is an alias to /src
 import ScoreBoard from "@/components/ScoreBoard.vue";
 import WeekButton from "@/components/WeekButton.vue";
+import LeagueWinner from "@/components/LeagueWinner.vue";
 
 export default {
   name: "Games",
   components: {
     ScoreBoard,
-    WeekButton
+    WeekButton,
+    LeagueWinner
   }
 };
 </script>

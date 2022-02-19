@@ -6,7 +6,11 @@ export default createStore({
     calendar: [],
     weeklyMatches: [],
     weekCounter: 0,
-    simulationStarted: false
+    simulationStarted: false,
+    start: true,
+    running: false,
+    finished: false,
+    showWinner: false
   },
   mutations: {
     ADD_TEAMS(state, teams) {
@@ -23,6 +27,18 @@ export default createStore({
     },
     START_SIMULATION(state) {
       state.simulationStarted = true;
+    },
+    START(state) {
+      state.start = false;
+    },
+    RUNNING(state, boolean) {
+      state.running = boolean;
+    },
+    FINISHED(state, boolean) {
+      state.finished = boolean;
+    },
+    SHOW_WINNER(state) {
+      state.showWinner = true;
     }
   },
   actions: {
@@ -43,6 +59,18 @@ export default createStore({
     },
     updateTable({ commit }, list) {
       commit("ADD_TEAMS", list);
+    },
+    start({ commit }) {
+      commit("START");
+    },
+    running({ commit }, boolean) {
+      commit("RUNNING", boolean);
+    },
+    finished({ commit }, boolean) {
+      commit("FINISHED", boolean);
+    },
+    showWinner({ commit }) {
+      commit("SHOW_WINNER");
     }
   },
   modules: {

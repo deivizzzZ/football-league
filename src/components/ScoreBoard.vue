@@ -1,24 +1,26 @@
 <template>
-  <div v-if="this.$store.state.simulationStarted">
-    <h1>{{ "Jornada " + this.$store.state.weekCounter }}</h1>
-    <div class="scoreboard">
-      <div class="score" v-for="(match, key) in this.$store.state.weeklyMatches" :key="key">
-        <div class="local">
-          <div class="local-info">
-            <img :src="match.showLocal.showLogo" :alt="'Escudo de ' + match.showLocal.showName" />
-            {{ match.showLocal.showName }}
+  <div v-if="!this.$store.state.showWinner">
+    <div v-if="this.$store.state.simulationStarted">
+      <h1>{{ "Jornada " + this.$store.state.weekCounter }}</h1>
+      <div class="scoreboard">
+        <div class="score" v-for="(match, key) in this.$store.state.weeklyMatches" :key="key">
+          <div class="local">
+            <div class="local-info">
+              <img :src="match.showLocal.showLogo" :alt="'Escudo de ' + match.showLocal.showName" />
+              {{ match.showLocal.showName }}
+            </div>
+            <div class="local-goals">{{ match.showLocalGoals }}</div>
           </div>
-          <div class="local-goals">{{ match.showLocalGoals }}</div>
-        </div>
-        <div class="visitor">
-          <div class="visitor-info">
-            {{ match.showVisitor.showName }}
-            <img
-              :src="match.showVisitor.showLogo"
-              :alt="'Escudo de ' + match.showLocal.showName"
-            />
+          <div class="visitor">
+            <div class="visitor-info">
+              {{ match.showVisitor.showName }}
+              <img
+                :src="match.showVisitor.showLogo"
+                :alt="'Escudo de ' + match.showLocal.showName"
+              />
+            </div>
+            <div class="visitor-goals">{{ match.showVisitorGoals }}</div>
           </div>
-          <div class="visitor-goals">{{ match.showVisitorGoals }}</div>
         </div>
       </div>
     </div>
