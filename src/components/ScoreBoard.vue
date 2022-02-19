@@ -1,7 +1,7 @@
 <template>
   <div v-if="!this.$store.state.showWinner">
     <div v-if="this.$store.state.simulationStarted">
-      <h1>{{ "Jornada " + this.$store.state.weekCounter }}</h1>
+      <h2>{{ "Jornada " + this.$store.state.weekCounter }}</h2>
       <div class="scoreboard">
         <div class="score" v-for="(match, key) in this.$store.state.weeklyMatches" :key="key">
           <div class="local">

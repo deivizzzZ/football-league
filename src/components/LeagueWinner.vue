@@ -12,6 +12,9 @@
 </template>
 
 <script>
+export default {
+  name: "LeagueWinner"
+};
 </script>
 
 <style scoped>

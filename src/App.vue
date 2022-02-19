@@ -1,4 +1,6 @@
 <template>
+  <h1>FOOTBALL LEAGUE</h1>
+  <LeagueModal />
   <div id="nav">
     <router-link to="/">Partidos</router-link>|
     <router-link to="/classification">Clasificación</router-link>
@@ -30,11 +32,10 @@
 </style>
 
 <script>
-import { SPAIN_ONE_TEAMS, SPAIN_ONE_CALENDAR } from "@/js/spainOne.js";
+import LeagueModal from "@/components/LeagueModal.vue";
 export default {
-  created() {
-    this.$store.dispatch("addTeams", SPAIN_ONE_TEAMS);
-    this.$store.dispatch("createCalendar", SPAIN_ONE_CALENDAR);
+  components: {
+    LeagueModal
   }
 };
 </script>

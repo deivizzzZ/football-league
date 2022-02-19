@@ -10,7 +10,8 @@ export default createStore({
     start: true,
     running: false,
     finished: false,
-    showWinner: false
+    showWinner: false,
+    modalVisible: true
   },
   mutations: {
     ADD_TEAMS(state, teams) {
@@ -39,6 +40,9 @@ export default createStore({
     },
     SHOW_WINNER(state) {
       state.showWinner = true;
+    },
+    HIDE_MODAL(state) {
+      state.modalVisible = false;
     }
   },
   actions: {
@@ -71,6 +75,9 @@ export default createStore({
     },
     showWinner({ commit }) {
       commit("SHOW_WINNER");
+    },
+    hideModal({ commit }) {
+      commit("HIDE_MODAL");
     }
   },
   modules: {
