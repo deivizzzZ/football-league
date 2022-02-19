@@ -45,13 +45,13 @@ img {
   gap: 20px;
 }
 .score {
+  width: 370px;
   background-color: black;
   color: white;
   border-radius: 10px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  gap: 10px;
 }
 .local {
   margin-right: 15px;
