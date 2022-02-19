@@ -30,10 +30,10 @@
 </style>
 
 <script>
-import { SPAIN_ONE, SPAIN_ONE_CALENDAR } from "@/js/spainOne.js";
+import { SPAIN_ONE_TEAMS, SPAIN_ONE_CALENDAR } from "@/js/spainOne.js";
 export default {
   created() {
-    this.$store.dispatch("addTeams", SPAIN_ONE);
+    this.$store.dispatch("addTeams", SPAIN_ONE_TEAMS);
     this.$store.dispatch("createCalendar", SPAIN_ONE_CALENDAR);
   }
 };
