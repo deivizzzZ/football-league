@@ -77,4 +77,10 @@ img {
   align-items: center;
   gap: 10px;
 }
+
+@media screen and (max-width: 768px) {
+  .scoreboard {
+    grid-template-columns: 1fr;
+  }
+}
 </style>
