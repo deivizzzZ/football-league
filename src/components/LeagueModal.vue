@@ -3,9 +3,15 @@
     <div class="modal">
       <h2>Selecciona liga para jugar</h2>
       <div class="league-container">
-        <div class="league-button" v-on:click="selectLeague('spain-one')">
-          <img src="/img/spain1/laliga.png" alt="Escudo de La Liga" />
-          <h3>Primera División de España</h3>
+        <!-- Primera División -->
+        <div class="league-button" v-on:click="selectLeague(this.leagues[0])">
+          <img src="/img/spain1/logo.png" alt="Escudo de Primera División" />
+          <h3>{{ spainOneLeague }}</h3>
+        </div>
+        <!-- Segunda División -->
+        <div class="league-button" v-on:click="selectLeague(this.leagues[1])">
+          <img src="/img/spain2/logo.png" alt="Escudo de Segunda División" />
+          <h3>{{ spainTwoLeague }}</h3>
         </div>
       </div>
     </div>
@@ -13,15 +19,22 @@
 </template>
 
 <script>
-import { SPAIN_ONE_TEAMS, SPAIN_ONE_CALENDAR } from "@/js/spainOne.js";
+import * as SPAIN_ONE from "@/js/spainOne.js";
+import * as SPAIN_TWO from "@/js/spainTwo.js";
 export default {
   name: "LeagueModal",
+  data() {
+    return {
+      leagues: [SPAIN_ONE, SPAIN_TWO],
+      spainOneLeague: SPAIN_ONE.TITLE,
+      spainTwoLeague: SPAIN_TWO.TITLE
+    };
+  },
   methods: {
-    selectLeague(league) {
-      if (league === "spain-one") {
-        this.$store.dispatch("addTeams", SPAIN_ONE_TEAMS);
-        this.$store.dispatch("createCalendar", SPAIN_ONE_CALENDAR);
-      }
+    selectLeague(leagueIndex) {
+      this.$store.dispatch("leagueName", leagueIndex.TITLE);
+      this.$store.dispatch("addTeams", leagueIndex.TEAMS);
+      this.$store.dispatch("createCalendar", leagueIndex.CALENDAR);
       this.$store.dispatch("hideModal");
     }
   }
@@ -54,7 +67,7 @@ export default {
   align-items: center;
 }
 .league-button {
-  width: 150px;
+  width: 160px;
   padding: 5px;
   border: 1px solid #000;
   cursor: pointer;
@@ -62,5 +75,15 @@ export default {
 img {
   width: 100px;
   height: 100px;
+}
+
+@media screen and (max-width: 768px) {
+  .modal {
+    width: 200px;
+  }
+  .league-container {
+    flex-direction: column;
+    gap: 20px;
+  }
 }
 </style>

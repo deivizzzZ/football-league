@@ -2,6 +2,7 @@ import { createStore } from "vuex";
 
 export default createStore({
   state: {
+    leagueName: "",
     teamList: [],
     calendar: [],
     weeklyMatches: [],
@@ -14,6 +15,9 @@ export default createStore({
     modalVisible: true
   },
   mutations: {
+    LEAGUE_NAME(state, name) {
+      state.leagueName = name;
+    },
     ADD_TEAMS(state, teams) {
       state.teamList = teams;
     },
@@ -46,6 +50,9 @@ export default createStore({
     }
   },
   actions: {
+    leagueName({ commit }, name) {
+      commit("LEAGUE_NAME", name);
+    },
     addTeams({ commit }, teams) {
       commit("ADD_TEAMS", teams);
     },

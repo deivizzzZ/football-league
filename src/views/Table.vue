@@ -1,29 +1,23 @@
 <template>
-  <div class="classification">
-    <h2>{{ title }}</h2>
+  <div class="league-table">
+    <h2>{{ this.$store.state.leagueName }}</h2>
     <ScoreTable />
   </div>
 </template>
 
 <script>
 import ScoreTable from "@/components/ScoreTable.vue";
-import { SPAIN_ONE_TITLE } from "@/js/spainOne.js";
 
 export default {
-  name: "Classification",
+  name: "Table",
   components: {
     ScoreTable
-  },
-  data() {
-    return {
-      title: SPAIN_ONE_TITLE
-    };
   }
 };
 </script>
 
 <style scoped>
-.classification {
+.league-table {
   display: flex;
   flex-direction: column;
   justify-content: center;
