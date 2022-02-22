@@ -1,4 +1,4 @@
-# football-league
+# Football League
 
 ## Project setup
 ```
